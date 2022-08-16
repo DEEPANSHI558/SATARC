@@ -1,20 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View, Image } from "react-native";
+import { Formik } from "formik";
+
+import Login from "./screens/Login";
+import Signup from "./screens/Signup";
+import Welcome from "./screens/Welcome";
+import Form from "./screens/Form";
+import Otp from "./screens/Otp";
+import RootStack from "./navigation/RootStack";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  return <RootStack></RootStack>;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
