@@ -182,6 +182,7 @@ color: '#000000',
   borderRadius: 5,
   margin:25,
   textAlign:'center',
+  backgroundColor:'transparent',
   },
 
   takenText1:{

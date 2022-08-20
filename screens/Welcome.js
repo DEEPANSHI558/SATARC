@@ -34,10 +34,12 @@ const Welcome = ({ navigation }) => {
         <Text style={styles.welcomeSubTitle}>Deepanshi Singh</Text>
         <Text style={styles.welcomeSubTitle}>singhdeepanshi2403@gmail.com</Text>
         <View style={styles.styledformArea}>
+          <View style={styles.avatarView}>
           <Image
             style={styles.avatar}
             source={require("../assets/image.jpeg")}
           ></Image>
+          </View>
           <View style={styles.line}></View>
           <TouchableOpacity
             style={styles.styledButton}
@@ -65,10 +67,12 @@ export default Welcome;
 
 const styles = StyleSheet.create({
   innerContainer: {
-    width: "100%",
-    height: "100%",
+    display:"flex",
+    flex: 1,
+    flexDirection:"column",
+    justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#ffff",
+    backgroundColor: "#ffffff",
   },
   styledformArea: {
     width: "90%",
@@ -100,6 +104,14 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
 
+  avatarView:{
+    display:"flex",
+    // flex: 1,
+    flexDirection:"column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
   //   extra view
 
   //Welcome View
@@ -114,8 +126,6 @@ const styles = StyleSheet.create({
   avatar: {
     width: 100,
     height: 100,
-    marginLeft: "33%",
-
     borderRadius: 50,
     borderWidth: 2,
     borderColor: "#E5E7E8", //secondary

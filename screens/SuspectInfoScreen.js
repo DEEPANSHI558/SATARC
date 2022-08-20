@@ -123,6 +123,7 @@ color: '#000000',
   backgroundColor: '#FCFAFA',
   borderWidth: 2, dashed: '#595959',
   borderRadius: 5,
+  backgroundColor:'transparent',
   },
 
     firstRadioButtonView:{

@@ -190,6 +190,7 @@ const styles = StyleSheet.create({
   backgroundColor: '#FCFAFA',
   borderWidth: 1, solid: '#919191',
   borderradius: 5,
+  backgroundColor:'transparent',
   },
 
 });

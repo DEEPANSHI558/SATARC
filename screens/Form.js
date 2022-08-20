@@ -40,7 +40,7 @@ const Form = ({ navigation }) => {
       }}
     >
       {({ handleChange, handleBlur, handleSubmit, values }) => (
-        <View style={{ flex: 1, paddingTop: 30 }}>
+        <View style={styles.firstView}>
           <ProgressSteps>
             <ProgressStep
               label="New Tip"
@@ -146,6 +146,15 @@ const styles = StyleSheet.create({
     marginVertical: 3,
     marginBottom: 10,
     color: "#1F2937",
+  },
+
+  firstView:{
+    display:"flex",
+    flex: 1,
+    flexDirection:"column",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#ffffff",
   },
   //   text
   styledInputLabel: {

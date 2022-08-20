@@ -135,11 +135,12 @@ export default Login;
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    padding: 25,
-    paddingTop: 50,
+    display:"flex",
+    flex: 1,
+    flexDirection:"column",
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: "#ffffff",
-    // height: "100vh",
   },
   innerContainer: {
     width: "100%",

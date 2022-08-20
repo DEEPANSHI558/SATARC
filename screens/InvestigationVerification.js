@@ -134,6 +134,7 @@ const styles = StyleSheet.create({
   backgroundColor: '#FCFAFA',
   borderWidth: 2, dashed: '#595959',
   borderRadius: 5,
+  backgroundColor:'transparent',
   },
   subtitle: {
     fontSize: 18,
@@ -159,6 +160,7 @@ const styles = StyleSheet.create({
   borderColor:'black',
   borderWidth: 1 ,solid: '#000000',
   borderRadius: 10,
+  backgroundColor:'transparent',
   },
     TextInput2:{
   width: 310,
@@ -168,6 +170,7 @@ const styles = StyleSheet.create({
   borderColor:'black',
   borderWidth: 1 ,solid: '#000000',
   borderRadius: 10,
+  backgroundColor:'transparent',
   },
     TextInput3:{
   width: 310,
@@ -177,6 +180,7 @@ const styles = StyleSheet.create({
   textAlign:'center',
   borderWidth: 1 ,solid: '#000000',
   borderRadius: 10,
+  backgroundColor:'transparent',
   },
     TextInput4:{
   width: 310,
@@ -186,6 +190,7 @@ const styles = StyleSheet.create({
   textAlign:'center',
   borderWidth: 1 ,solid: '#000000',
   borderRadius: 10,
+  backgroundColor:'transparent',
   },
   TextInput5:{
   //width: 267,
