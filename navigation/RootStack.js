@@ -9,6 +9,7 @@ import Signup from "./../screens/Signup";
 import Welcome from "./../screens/Welcome";
 import Form from "./../screens/Form";
 import Task from "./../screens/Task";
+import InvestigationVerfication from "../screens/InvestigationVerification";
 
 const Stack = createStackNavigator();
 
@@ -28,7 +29,7 @@ const RootStack = () => {
           },
         }}
       >
-        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Login" component={Login} />        
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen
           // options={{ headerTintColor: "#ffffff" }}

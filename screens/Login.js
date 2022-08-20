@@ -139,6 +139,7 @@ const styles = StyleSheet.create({
     padding: 25,
     paddingTop: 50,
     backgroundColor: "#ffffff",
+    // height: "100vh",
   },
   innerContainer: {
     width: "100%",

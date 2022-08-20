@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
+import InvestigationVerfication from "./InvestigationVerification";
+import CrimeDeatilsScreenOne from "./CrimeDetailScreenOne";
+import TipRegardingScreen from "./TipRegardingScreen";
+import TypeOfCrime from "./TypeOfCrime";
+import SuspectInfoScreen from "./SuspectInfoScreen";
 const tip_api =
   "https://bpp8n7mg56.execute-api.us-east-1.amazonaws.com/dev/tips";
 import {
@@ -62,6 +67,21 @@ const Form = ({ navigation }) => {
                 value={values.email}
                 keyboardType="email-address"
               ></MyInputText>
+            </ProgressStep>
+            <ProgressStep >
+              <InvestigationVerfication></InvestigationVerfication>
+            </ProgressStep>
+            <ProgressStep >
+              <CrimeDeatilsScreenOne></CrimeDeatilsScreenOne>
+            </ProgressStep>
+            <ProgressStep >
+              <TipRegardingScreen></TipRegardingScreen>
+            </ProgressStep>
+            <ProgressStep >
+              <TypeOfCrime></TypeOfCrime>
+            </ProgressStep>
+            <ProgressStep >
+              <SuspectInfoScreen></SuspectInfoScreen>
             </ProgressStep>
             <ProgressStep label="Crime Info" onSubmit={handleSubmit}>
               <MyInputText
