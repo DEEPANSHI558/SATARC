@@ -30,15 +30,19 @@ const Welcome = ({ navigation }) => {
   return (
     <View style={styles.innerContainer}>
       <View style={styles.welcomecontainer}>
-        <Text style={styles.welcomeTitle}>Welcome </Text>
-        <Text style={styles.welcomeSubTitle}>Deepanshi Singh</Text>
-        <Text style={styles.welcomeSubTitle}>singhdeepanshi2403@gmail.com</Text>
+        <Text style={styles.welcomeTitle}>SATARC</Text>
+        <Text style={styles.welcomeSubTitle}>Welcome to Satarc</Text>
+        <Text style={styles.welcomeSubTitle}>
+          The most effective, anonymous reporting system for crime in the
+          nation.
+        </Text>
         <View style={styles.styledformArea}>
           <View style={styles.avatarView}>
-          <Image
-            style={styles.avatar}
-            source={require("../assets/image.jpeg")}
-          ></Image>
+            <Image
+              style={styles.avatar}
+              resizeMode="contain"
+              source={require("../assets/welcome_icon.png")}
+            ></Image>
           </View>
           <View style={styles.line}></View>
           <TouchableOpacity
@@ -55,7 +59,7 @@ const Welcome = ({ navigation }) => {
               navigation.navigate("Login");
             }}
           >
-            <Text style={styles.buttonText}>LogOut</Text>
+            <Text style={styles.buttonText}>Log In</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -67,9 +71,9 @@ export default Welcome;
 
 const styles = StyleSheet.create({
   innerContainer: {
-    display:"flex",
+    display: "flex",
     flex: 1,
-    flexDirection:"column",
+    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#ffffff",
@@ -104,16 +108,6 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
 
-  avatarView:{
-    display:"flex",
-    // flex: 1,
-    flexDirection:"column",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  //   extra view
-
   //Welcome View
   welcomecontainer: {
     width: "100%",
@@ -122,15 +116,24 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     justifyContent: "center",
   },
-  // Avatar Iamge
-  avatar: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    borderWidth: 2,
+  avatarView: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: "50%",
+    borderWidth: 1,
+    height: 160,
+    width: 160,
+    alignSelf: "center",
     borderColor: "#E5E7E8", //secondary
     marginBottom: 10,
     marginTop: 10,
+  },
+  // Avatar Iamge
+  avatar: {
+    width: "100%",
+    height: "85%",
   },
   //iamge
   welcomeImage: {
@@ -146,6 +149,7 @@ const styles = StyleSheet.create({
     color: "#1F2937",
     marginBottom: 5,
     fontWeight: "normal",
+    textAlign: "center",
   },
   welcomeTitle: {
     fontSize: 35,

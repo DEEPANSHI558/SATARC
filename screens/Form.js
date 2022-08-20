@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import InvestigationVerfication from "./InvestigationVerification";
-import CrimeDeatilsScreenOne from "./CrimeDetailScreenOne";
+import InvestigationVerfication from "./IdentityVerification";
+import CrimeDetailScreenOne from "./CrimeDetailScreenOne";
 import TipRegardingScreen from "./TipRegardingScreen";
 import TypeOfCrime from "./TypeOfCrime";
 import SuspectInfoScreen from "./SuspectInfoScreen";
@@ -21,6 +21,15 @@ import { ProgressSteps, ProgressStep } from "react-native-progress-steps";
 import { Formik } from "formik";
 import { Octicons, Ionicons } from "@expo/vector-icons";
 
+const ProgressStepsProps = {
+  borderWidth: 3,
+  completedLabelColor: "#4285F4",
+  activeLabelColor: "#4285F4",
+  activeStepIconBorderColor: "#4285F4",
+  completedProgressBarColor: "#4285F4",
+  completedStepIconColor: "#4285F4",
+};
+
 const Form = ({ navigation }) => {
   const [hidepassword, setHidePassword] = useState(true);
   const submitTip = async (values) => {
@@ -31,68 +40,31 @@ const Form = ({ navigation }) => {
       console.log(err);
     }
   };
+
   return (
     <Formik
       initialValues={{ email: "", password: "" }}
       onSubmit={(values) => {
+        navigation.navigate("Login");
         submitTip(values);
-        navigation.navigate("Task");
+        console.log("submitted");
       }}
     >
       {({ handleChange, handleBlur, handleSubmit, values }) => (
         <View style={styles.firstView}>
-          <ProgressSteps>
-            <ProgressStep
-              label="New Tip"
-              activeStepIconBorderColor="#ffff"
-              completedProgressBarColor=""
-            >
-              <MyInputText
-                label="Govt ID Aadhar/PAN/Driving Licence Upload"
-                icon="mail"
-                placeholder="email@gmail.com"
-                onChangeText={handleChange("email")}
-                onBlur={handleBlur("email")}
-                value={values.email}
-                keyboardType="email-address"
-              ></MyInputText>
+          <View style={{ height: 30 }} />
+          <ProgressSteps {...ProgressStepsProps}>
+            <ProgressStep label="New Tip">
+              <CrimeDetailScreenOne></CrimeDetailScreenOne>
             </ProgressStep>
             <ProgressStep label="Regarding">
-              <MyInputText
-                label="Email Address"
-                icon="mail"
-                placeholder="email@gmail.com"
-                onChangeText={handleChange("email")}
-                onBlur={handleBlur("email")}
-                value={values.email}
-                keyboardType="email-address"
-              ></MyInputText>
-            </ProgressStep>
-            <ProgressStep >
-              <InvestigationVerfication></InvestigationVerfication>
-            </ProgressStep>
-            <ProgressStep >
-              <CrimeDeatilsScreenOne></CrimeDeatilsScreenOne>
-            </ProgressStep>
-            <ProgressStep >
               <TipRegardingScreen></TipRegardingScreen>
             </ProgressStep>
-            <ProgressStep >
+            <ProgressStep label="Crime Info">
               <TypeOfCrime></TypeOfCrime>
             </ProgressStep>
-            <ProgressStep >
+            <ProgressStep label="Suspect Info" onSubmit={handleSubmit}>
               <SuspectInfoScreen></SuspectInfoScreen>
-            </ProgressStep>
-            <ProgressStep label="Crime Info" onSubmit={handleSubmit}>
-              <MyInputText
-                label="Email Address"
-                icon="mail"
-                placeholder="email@gmail.com"
-                onChangeText={handleChange("email")}
-                onBlur={handleBlur("email")}
-                value={values.email}
-                keyboardType="email-address"
-              ></MyInputText>
             </ProgressStep>
           </ProgressSteps>
         </View>
@@ -148,10 +120,11 @@ const styles = StyleSheet.create({
     color: "#1F2937",
   },
 
-  firstView:{
-    display:"flex",
+  firstView: {
+    display: "flex",
     flex: 1,
-    flexDirection:"column",
+
+    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#ffffff",

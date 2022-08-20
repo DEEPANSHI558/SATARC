@@ -44,33 +44,19 @@ const Login = ({ navigation }) => {
           initialValues={{ email: "", password: "" }}
           onSubmit={(values) => {
             console.log(values);
-            navigation.navigate("Welcome");
+            navigation.navigate("HomeScreen");
           }}
         >
           {({ handleChange, handleBlur, handleSubmit, values }) => (
             <View style={styles.styledformArea}>
               <MyInputText
-                label="Email Address"
-                icon="mail"
-                placeholder="email@gmail.com"
+                label="Phone Number"
+                icon="device-mobile"
+                placeholder="Enter Valid Phone Number"
                 onChangeText={handleChange("email")}
                 onBlur={handleBlur("email")}
                 value={values.email}
                 keyboardType="email-address"
-              ></MyInputText>
-
-              <MyInputText
-                label="Enter Password"
-                icon="lock"
-                placeholder="* * * * * * * *"
-                placeholderTextColor=""
-                onChangeText={handleChange("password")}
-                onBlur={handleBlur("password")}
-                value={values.password}
-                secureTextEntry={hidepassword}
-                isPassword={true}
-                hidepassword={hidepassword}
-                setHidePassword={setHidePassword}
               ></MyInputText>
               <Text style={styles.msgBox}></Text>
               <TouchableOpacity
@@ -83,9 +69,7 @@ const Login = ({ navigation }) => {
               <View style={styles.line}></View>
 
               <View style={styles.extraView}>
-                <Text style={styles.extraText}>
-                  Don't have an account already?
-                </Text>
+                <Text style={styles.extraText}></Text>
                 <TouchableOpacity
                   style={styles.textLink}
                   onPress={() => navigation.navigate("Signup")}
@@ -135,9 +119,9 @@ export default Login;
 
 const styles = StyleSheet.create({
   container: {
-    display:"flex",
+    display: "flex",
     flex: 1,
-    flexDirection:"column",
+    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#ffffff",
@@ -188,7 +172,7 @@ const styles = StyleSheet.create({
   //   text
   styledInputLabel: {
     color: "#1F2937",
-    fontSize: 13,
+    fontSize: 16,
     textAlign: "left",
   },
   //view
