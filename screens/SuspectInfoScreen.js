@@ -3,8 +3,41 @@ import { render } from 'react-dom'
 import  {View,Button,TextInput,StyleSheet,Text,ToastAndroid, Alert,Image} from 'react-native'
 import { CheckBox } from 'react-native-elements'
 import { RadioButton } from 'react-native-paper'
+import { launchImageLibrary } from 'react-native-image-picker';
 
 const SuspectInfoScreen = () =>{
+
+const setToastMsg=msg=>{
+  ToastAndroid.showWithGravity(msg,ToastAndroid.SHORT,ToastAndroid.CENTER);
+};
+
+
+const uploadFile=()=>{
+    let options={
+      mediaType:'photo',
+      quality:1,
+      includeBase64:true,
+    };
+      launchImageLibrary(options,response=>{
+      if(response.didCancel){
+          setToastMsg('Cancelled Image Selection');
+      }else if((response.errorCode='permission')){
+        setToastMsg('Permission not satisfied');
+      }else if((response.errorCode='others')){
+        setToastMsg(response.errorMessage);
+      }else if(response.assets[0].fileSize>2097152){
+        Alert.alert('Maximum image size exceeded',
+        'Please choose image under 2 MB',
+        [{text:'OK'}],
+        );
+      };
+    });
+    // .catch(error=>{
+    //   console.log(error);
+    // })
+  };
+
+
 
     const [inforRegardingSuspect, setinforRegardingSuspect] = React.useState('first');
     const [inforRegardingVehicle, setinforRegardingVehicle] = React.useState('first');;
@@ -41,7 +74,15 @@ const SuspectInfoScreen = () =>{
         />
         <Text style={{position:'relative', top:8}}>No</Text>
         </View>
-        <Text style={syles.evidenceText}>Do you have any evidence?</Text>                                
+        <Text style={styles.evidenceText}>Do you have any evidence?</Text>
+        <Text style={styles.uploadText}>Please upload any pictures, videos, documents regarding the incident if any.</Text>
+        <View style={styles.uploadBorder}>
+            <View style={styles.buttonCenterView}>
+              <Button mode="contained" style={styles.addFileButton}
+                title="Add File" onPress={()=>uploadFile()}>
+              </Button>
+            </View>
+        </View>                                 
         </View>
     )
 }
@@ -67,6 +108,22 @@ lineHeight: 19,
 color: '#000000',
 
 },
+
+  buttonCenterView:{
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+ uploadBorder: {
+  marginLeft:0,
+  margin:10,
+  width: 'auto',
+  height: 172,
+  backgroundColor: '#FCFAFA',
+  borderWidth: 2, dashed: '#595959',
+  borderRadius: 5,
+  },
 
     firstRadioButtonView:{
         margin:7,
@@ -104,9 +161,22 @@ color: '#000000',
     },
 
     evidenceText:{
+        marginLeft:0,
+        margin:7,
         fontFamily: 'Roboto',
         fontStyle: 'normal',
         fontWeight: '700',
+        fontSize: 16,
+        lineHeight: 19,
+        color: '#000000'
+    },
+
+    uploadText:{
+        marginLeft:0,
+        margin:7,
+        fontFamily: 'Roboto',
+        fontStyle: 'normal',
+        fontWeight: '400',
         fontSize: 16,
         lineHeight: 19,
         color: '#000000'

@@ -173,11 +173,15 @@ color: '#000000',
   },
 
   takenTextInput:{
-    margin:25,
-    textAlign:'center',
-    borderWidth: 1, solid: '#919191',
-    height: 38,
-    borderRadius: 5,
+                                 
+  // margin:10,
+  width: 'auto',
+  height: 172,
+  backgroundColor: '#FCFAFA',
+  borderWidth: 1, solid: '#919191',
+  borderRadius: 5,
+  margin:25,
+  textAlign:'center',
   },
 
   takenText1:{

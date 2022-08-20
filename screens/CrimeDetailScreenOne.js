@@ -121,6 +121,13 @@ const styles = StyleSheet.create({
   color: '#000000',
   },
 
+  addFileButton:{
+  width: 154,
+  height: 39,
+  backgroundColor: '#4285F4',
+  borderRadius: 5,
+  },
+
   stateCrimeOccuringText:{
     margin:7,
   fontFamily: 'Roboto',
