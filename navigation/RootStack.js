@@ -11,6 +11,7 @@ import Form from "./../screens/Form";
 import Task from "./../screens/Task";
 import HomeScreen from "./../screens/HomeScreen";
 import Test from "../screens/Test";
+import IdentityVerification from "../screens/IdentityVerification";
 
 const Stack = createStackNavigator();
 
@@ -38,6 +39,7 @@ const RootStack = () => {
         />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        <Stack.Screen name="verification" component={IdentityVerification} />
         <Stack.Screen name="Signup" component={Signup} />
 
         <Stack.Screen name="Form" component={Form} />
