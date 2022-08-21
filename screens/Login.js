@@ -16,6 +16,8 @@ import {
 import { StatusBar } from "expo-status-bar";
 import { Formik } from "formik";
 import { Octicons, Ionicons } from "@expo/vector-icons";
+import axios from "axios";
+import apiRoutes from "../apiRoutes";
 
 export const Colours = {
   primary: "#ffffff",
@@ -27,8 +29,18 @@ export const Colours = {
   red: "#EF4444",
 };
 const { primary, secondary, tertiary, darkLight, brand, green, red } = Colours;
-
 const Login = ({ navigation }) => {
+  const submitData = async (values) => {
+    console.log("submitData", values);
+    const { otp, userId } = await (
+      await axios.post(apiRoutes.login, values)
+    ).data;
+
+    console.log(otp, userId);
+
+    navigation.navigate("HomeScreen");
+  };
+
   // when to hide the password or show the password
   const [hidepassword, setHidePassword] = useState(true);
   return (
@@ -41,10 +53,9 @@ const Login = ({ navigation }) => {
         <Text style={styles.pageTitle}>SATARC</Text>
         <Text style={styles.subtitle}>Account Login</Text>
         <Formik
-          initialValues={{ email: "", password: "" }}
+          initialValues={{ number: "" }}
           onSubmit={(values) => {
-            console.log(values);
-            navigation.navigate("HomeScreen");
+            submitData(values);
           }}
         >
           {({ handleChange, handleBlur, handleSubmit, values }) => (
@@ -53,10 +64,9 @@ const Login = ({ navigation }) => {
                 label="Phone Number"
                 icon="device-mobile"
                 placeholder="Enter Valid Phone Number"
-                onChangeText={handleChange("email")}
-                onBlur={handleBlur("email")}
-                value={values.email}
-                keyboardType="email-address"
+                onChangeText={handleChange("number")}
+                onBlur={handleBlur("number")}
+                value={values.number}
               ></MyInputText>
               <Text style={styles.msgBox}></Text>
               <TouchableOpacity
