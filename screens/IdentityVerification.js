@@ -54,6 +54,7 @@ const IdentityVerification = () => {
       <View style={{ margin: 12 }}>
         <Text style={styles.font}>Full Name</Text>
         <TextInput
+          placeholderTextColor="darkgray"
           placeholder="Enter Name"
           onChangeText={(newText) => setName(newText)}
           style={styles.TextInput1}
@@ -63,6 +64,7 @@ const IdentityVerification = () => {
       <View style={{ margin: 12 }}>
         <Text style={styles.font}>Email ID</Text>
         <TextInput
+          placeholderTextColor="darkgray"
           placeholder="Enter Email Id"
           onChangeText={(newText) => setEmail(newText)}
           style={styles.TextInput2}
@@ -72,6 +74,7 @@ const IdentityVerification = () => {
       <View style={{ margin: 12 }}>
         <Text style={styles.font}>Phone Number</Text>
         <TextInput
+          placeholderTextColor="darkgray"
           placeholder="+91 |"
           onChangeText={(newText) => setPhoneNo(newText)}
           style={styles.TextInput3}
@@ -81,6 +84,7 @@ const IdentityVerification = () => {
       <View style={{ margin: 12 }}>
         <Text style={styles.font}>Govt ID</Text>
         <TextInput
+          placeholderTextColor="darkgray"
           placeholder="**********"
           secureTextEntry={true}
           onChangeText={(newText) => setGovtId(newText)}
