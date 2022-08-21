@@ -12,27 +12,8 @@ const Otp = ({ route, navigation }) => {
     <View>
       <Text>Your OTP is {route.params.otp}</Text>
       <Text>User Id {route.params.userId}</Text>
-
-      {/* <Formik initialValues={{ otp: "" }} onSubmit={submitData}>
-        {({ handleChange, handleBlur, handleSubmit, values }) => (
-          <View>
-            <TextInput
-              placeholder="Enter Valid OTP"
-              onChangeText={handleChange("otp")}
-              onBlur={handleBlur("otp")}
-              value={values.otp}
-            ></TextInput>
-            <Text></Text>
-            <TouchableOpacity onPress={handleSubmit}>
-              <Text>Login</Text>
-            </TouchableOpacity>
-          </View>
-        )}
-      </Formik> */}
     </View>
   );
 };
 
 export default Otp;
-
-const styles = StyleSheet.create({});
