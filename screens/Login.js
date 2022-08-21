@@ -38,7 +38,7 @@ const Login = ({ navigation }) => {
 
     console.log(otp, userId);
 
-    navigation.navigate("HomeScreen");
+    navigation.navigate("Otp", { otp, userId });
   };
 
   // when to hide the password or show the password

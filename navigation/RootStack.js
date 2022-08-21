@@ -11,6 +11,7 @@ import Form from "./../screens/Form";
 import Task from "./../screens/Task";
 import HomeScreen from "./../screens/HomeScreen";
 import Test from "../screens/Test";
+import Otp from "../screens/Otp";
 import IdentityVerification from "../screens/IdentityVerification";
 
 const Stack = createStackNavigator();
@@ -45,6 +46,7 @@ const RootStack = () => {
         <Stack.Screen name="Form" component={Form} />
 
         <Stack.Screen name="Task" component={Task} />
+        <Stack.Screen name="Otp" component={Otp} />
       </Stack.Navigator>
     </NavigationContainer>
   );
