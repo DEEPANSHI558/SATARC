@@ -99,7 +99,11 @@ const MyInputText = ({
         <Octicons name={icon} size={30} color="#4285F4"></Octicons>
       </View>
       <Text style={styles.styledInputLabel}>{label}</Text>
-      <TextInput style={styles.textInput} {...props}></TextInput>
+      <TextInput
+        style={styles.textInput}
+        placeholderTextColor="darkgray"
+        {...props}
+      ></TextInput>
       {isPassword && (
         <TouchableOpacity style={styles.rightIcon}>
           <Ionicons
@@ -178,7 +182,7 @@ const styles = StyleSheet.create({
   //view
   leftIcon: {
     left: 15,
-    top: 30,
+    top: 38,
     position: "absolute",
     zIndex: 1,
   },
