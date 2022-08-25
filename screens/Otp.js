@@ -8,8 +8,6 @@ import {
   StyleSheet,
   Alert,
 } from "react-native";
-// import Snackbar from "react-native-snackbar";
-// import Snackbar from "react-native-snackbar";
 import { Snackbar } from "react-native-paper";
 import { Octicons } from "@expo/vector-icons";
 import routes from "../apiRoutes";
@@ -19,7 +17,6 @@ const Otp = ({ route, navigation }) => {
   const [otpPop, setOtpPop] = useState(true);
   const submitData = async (values) => {
     try {
-      console.log(values);
       const { data } = await axios.post(
         routes.login + "/" + route.params.userId,
         values
@@ -46,7 +43,7 @@ const Otp = ({ route, navigation }) => {
         Invalid OTP
       </Snackbar>
       <View>
-        <View style={{ position: "relative", height: "300px", width: "100%" }}>
+        <View style={{ position: "relative", height: 300, width: "100%" }}>
           <Snackbar
             visible={otpPop}
             onDismiss={() => setOtpPop(false)}

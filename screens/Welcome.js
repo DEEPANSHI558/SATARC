@@ -12,6 +12,7 @@ import {
 import { StatusBar } from "expo-status-bar";
 import { Formik } from "formik";
 import { Octicons, Ionicons } from "@expo/vector-icons";
+import Popup from "./Popup";
 
 export const Colours = {
   primary: "#ffffff",
@@ -27,8 +28,10 @@ const { primary, secondary, tertiary, darkLight, brand, green, red } = Colours;
 const Welcome = ({ navigation }) => {
   // when to hide the password or show the password
   const [hidepassword, setHidePassword] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   return (
     <View style={styles.innerContainer}>
+      <Popup modalVisible={showModal} setModalVisible={setShowModal}></Popup>
       <View style={styles.welcomecontainer}>
         <Text style={styles.welcomeTitle}>SATARC</Text>
         <Text style={styles.welcomeSubTitle}>Welcome to Satarc</Text>
@@ -48,7 +51,7 @@ const Welcome = ({ navigation }) => {
           <TouchableOpacity
             style={styles.styledButton}
             onPress={() => {
-              navigation.navigate("Form");
+              setShowModal(true);
             }}
           >
             <Text style={styles.buttonText}>Submit Tip</Text>
@@ -121,7 +124,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: "50%",
+    borderRadius: 80,
     borderWidth: 1,
     height: 160,
     width: 160,
