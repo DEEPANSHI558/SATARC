@@ -6,10 +6,9 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
-  Alert,
 } from "react-native";
-import { Snackbar } from "react-native-paper";
 import { Octicons } from "@expo/vector-icons";
+import { Snackbar } from "react-native-paper";
 import routes from "../apiRoutes";
 import { Formik } from "formik";
 const Otp = ({ route, navigation }) => {
@@ -29,21 +28,9 @@ const Otp = ({ route, navigation }) => {
     }
   };
   return (
-    <>
-      <Snackbar
-        visible={isVisible}
-        onDismiss={() => setIsVisible(false)}
-        action={{
-          label: "OK",
-          onPress: () => {
-            setIsVisible(false);
-          },
-        }}
-      >
-        Invalid OTP
-      </Snackbar>
-      <View>
-        <View style={{ position: "relative", height: 300, width: "100%" }}>
+    <View style={styles.container}>
+      <View style={styles.innerContainer}>
+        <View style={styles.otpReceiveContainer}>
           <Snackbar
             visible={otpPop}
             onDismiss={() => setOtpPop(false)}
@@ -54,82 +41,85 @@ const Otp = ({ route, navigation }) => {
               },
             }}
           >
-            Your OTP is {route.params.otp}
+            Your OTP is{" "}
+            <Text
+              style={{
+                color: "yellow",
+                fontWeight: "bold",
+              }}
+            >
+              {route.params.otp}
+            </Text>
           </Snackbar>
         </View>
-        <Formik initialValues={{ otp: "" }} onSubmit={submitData}>
-          {({ handleChange, handleBlur, handleSubmit, values }) => (
-            <View style={styles.styledformArea}>
-              <MyInputText
-                label="ENTER OTP"
-                icon="device-mobile"
-                placeholder="Enter OTP"
-                onChangeText={handleChange("otp")}
-                onBlur={handleBlur("otp")}
-                value={values.otp}
-              ></MyInputText>
-              <Text style={styles.msgBox}></Text>
-              <TouchableOpacity
-                style={styles.styledButton}
-                onPress={handleSubmit}
-              >
-                <Text style={styles.buttonText}>Login</Text>
-              </TouchableOpacity>
-
-              <View style={styles.line}></View>
-            </View>
-          )}
-        </Formik>
-      </View>
-    </>
-  );
-};
-const MyInputText = ({
-  label,
-  icon,
-  isPassword,
-  hidepassword,
-  setHidePassword,
-  ...props
-}) => {
-  return (
-    <View>
-      <View style={styles.leftIcon}>
-        <Octicons name={icon} size={30} color="#4285F4"></Octicons>
-      </View>
-      <Text style={styles.styledInputLabel}>{label}</Text>
-      <TextInput
-        style={styles.textInput}
-        placeholderTextColor="darkgray"
-        {...props}
-      ></TextInput>
-      {isPassword && (
-        <TouchableOpacity style={styles.rightIcon}>
-          <Ionicons
-            size={30}
-            name={hidepassword ? "md-eye-off" : "md-eye"}
-            onPress={() => {
-              setHidePassword(!hidepassword);
+        <View style={styles.otp}>
+          <Text style={styles.textBold}>Enter OTP Received</Text>
+          {/* <Text>User Id {route.params.userId}</Text> */}
+          <Formik
+            initialValues={{ otp: "" }}
+            onSubmit={(values) => {
+              submitData(values);
             }}
-          ></Ionicons>
-        </TouchableOpacity>
-      )}
+          >
+            {({ handleChange, handleBlur, handleSubmit, values }) => (
+              <View>
+                <TextInput
+                  // placeholder="Enter Valid OTP"
+                  onChangeText={handleChange("otp")}
+                  onBlur={handleBlur("otp")}
+                  value={values.otp}
+                  style={styles.textInput}
+                ></TextInput>
+                <TouchableOpacity
+                  onPress={handleSubmit}
+                  style={styles.styledButton}
+                >
+                  <Text style={styles.buttonText}>Submit OTP</Text>
+                </TouchableOpacity>
+                <View style={styles.line}></View>
+                <TouchableOpacity
+                  style={styles.textLink}
+                  onPress={() => resendOtp()}
+                >
+                  <Text style={styles.textLinkContent}>Resend OTP</Text>
+                </TouchableOpacity>
+              </View>
+            )}
+          </Formik>
+        </View>
+        <View style={styles.otpinvalidContainer}>
+          <Snackbar
+            visible={isVisible}
+            onDismiss={() => setIsVisible(false)}
+            action={{
+              label: "OK",
+              onPress: () => {
+                setIsVisible(false);
+              },
+            }}
+          >
+            Invalid OTP
+          </Snackbar>
+        </View>
+      </View>
     </View>
   );
 };
+
+export default Otp;
 
 const styles = StyleSheet.create({
   container: {
     display: "flex",
     flex: 1,
     flexDirection: "column",
-    justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#ffffff",
+    justifyContent: "space-between",
+    backgroundColor: "#ffff",
   },
   innerContainer: {
-    width: "100%",
-    alignItems: "center",
+    margin: 10,
+    marginTop: 40,
   },
 
   text: {
@@ -143,9 +133,6 @@ const styles = StyleSheet.create({
   pageTitle: {
     fontSize: 30,
     textAlign: "center",
-    fontWeight: "bold",
-    color: "#4285F4",
-    padding: 10,
   },
   subtitle: {
     fontSize: 18,
@@ -155,7 +142,7 @@ const styles = StyleSheet.create({
     color: "#1F2937",
   },
   styledformArea: {
-    width: "90%",
+    width: 270,
   },
   //this is for myInputText
   //   textinput
@@ -199,42 +186,32 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     height: 60,
   },
-  //text
+  number: {
+    color: "red",
+  },
   buttonText: {
     color: "#ffffff",
     fontSize: 20,
     textAlign: "center",
     fontWeight: "bold",
   },
-  //msg box text
-  msgBox: {
-    textAlign: "center",
-    fontSize: 13,
+  otpReceiveContainer: {
+    // paddingBottom: 300,
+    height: "80px",
+    width: "100%",
+    // backgroundColor: "black",
   },
-  //View
+  otpinvalidContainer: {
+    height: "500px",
+    width: "100%",
+    // backgroundColor: "black",
+  },
   line: {
     height: 1,
     width: "100%",
     backgroundColor: "#9CA3AF",
     marginVertical: 10,
   },
-
-  //   extra view
-  extraView: {
-    justifyContent: "center",
-    flexDirection: "row",
-    alignItems: "center",
-    padding: 10,
-  },
-  //text
-  extraText: {
-    justifyContent: "center",
-    alignContent: "center",
-    color: "#1F2937", //tertiary
-    fontSize: 15,
-    marginRight: 10,
-  },
-  //touchable opacity
   textLink: {
     justifyContent: "center",
     alignItems: "center",
@@ -244,5 +221,3 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
 });
-
-export default Otp;

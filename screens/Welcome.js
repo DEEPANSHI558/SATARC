@@ -31,7 +31,6 @@ const Welcome = ({ navigation }) => {
   const [showModal, setShowModal] = useState(false);
   return (
     <View style={styles.innerContainer}>
-      <Popup modalVisible={showModal} setModalVisible={setShowModal}></Popup>
       <View style={styles.welcomecontainer}>
         <Text style={styles.welcomeTitle}>SATARC</Text>
         <Text style={styles.welcomeSubTitle}>Welcome to Satarc</Text>
@@ -39,6 +38,7 @@ const Welcome = ({ navigation }) => {
           The most effective, anonymous reporting system for crime in the
           nation.
         </Text>
+        <Popup modalVisible={showModal} setModalVisible={setShowModal}></Popup>
         <View style={styles.styledformArea}>
           <View style={styles.avatarView}>
             <Image

@@ -9,7 +9,7 @@ import Form from "./screens/Form";
 import Otp from "./screens/Otp";
 import Task from "./screens/Task";
 import RootStack from "./navigation/RootStack";
-
+import TimeofCrime from "./screens/TimeofCrime";
 export default function App() {
   return <RootStack></RootStack>;
 }

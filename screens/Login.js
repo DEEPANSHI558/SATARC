@@ -38,7 +38,11 @@ const Login = ({ navigation }) => {
 
     console.log(otp, userId);
 
-    navigation.navigate("Otp", { otp, userId });
+    navigation.navigate("Otp", {
+      otp,
+      userId,
+      number:values.number
+    });
   };
 
   // when to hide the password or show the password

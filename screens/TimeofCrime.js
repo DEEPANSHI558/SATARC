@@ -33,37 +33,37 @@ const TypeOfCrime = () => {
     <View style={styles.firstView}>
       <Text style={styles.TypeOfCrimeText}>What is the type of crime?</Text>
       <Text style={styles.allThatApllyText}>Please select all that apply</Text>
-
       <CheckBox
-        title="Drug Raleted"
+        value={drugRelated}
+        onValueChange={setdrugRelated}
         checkedColor="green"
         checked={drugRelated}
-        onPress={() => setFraud(!drugRelated)}
         containerStyle={styles.drugRelatedContainer}
       />
       <CheckBox
-        title="Drug Raleted1"
+        value={drugRelated1}
+        onValueChange={setdrugRelated1}
         checkedColor="green"
         checked={drugRelated1}
         onPress={() => setdrugRelated1(!drugRelated1)}
         containerStyle={styles.drugRelated1Container}
       />
       <CheckBox
-        title="Drug Raleted2"
+        value={drugRelated2}
         checkedColor="green"
         checked={drugRelated2}
         onPress={() => setdrugRelated2(!drugRelated2)}
         containerStyle={styles.drugRelated2Container}
       />
       <CheckBox
-        title="Drug Related3"
+        value="Drug Related3"
         checkedColor="green"
         checked={drugRelated3}
         onPress={() => setdrugRelated3(!drugRelated3)}
         containerStyle={styles.drugRelated3Container}
       />
       <CheckBox
-        title="Theft"
+        value="Theft"
         checkedColor="green"
         checked={theft}
         onPress={() => setTheft(!theft)}
@@ -82,35 +82,35 @@ const TypeOfCrime = () => {
         style={styles.takenTextInput}
       />
       <CheckBox
-        title="Self Harm"
+        value="Self Harm"
         checkedColor="green"
         checked={selfHarm}
         onPress={() => setSelfHarm(!selfHarm)}
         containerStyle={styles.selfHarmContainer}
       />
       <CheckBox
-        title="Sex Crimes"
+        value="Sex Crimes"
         checkedColor="green"
         checked={sexCrimes}
         onPress={() => setSexCrimes(!sexCrimes)}
         containerStyle={styles.sexCrimesContainer}
       />
       <CheckBox
-        title="Molestation"
+        value="Molestation"
         checkedColor="green"
         checked={molestationCrimes}
         onPress={() => setMolestationCrimes(!molestationCrimes)}
         containerStyle={styles.molestationCrimesContainer}
       />
       <CheckBox
-        title="Rape"
+        value="Rape"
         checkedColor="green"
         checked={rapeCrimes}
         onPress={() => setRapeCrimes(!rapeCrimes)}
         containerStyle={styles.rapeCrimesContainer}
       />
       <CheckBox
-        title="Prostitution"
+        value="Prostitution"
         checkedColor="green"
         checked={prostitutionCrimes}
         onPress={() => setProstitutionCrimes(!prostitutionCrimes)}

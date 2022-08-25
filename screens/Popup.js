@@ -3,45 +3,37 @@ import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
 
 const Popup = ({ modalVisible, setModalVisible }) => {
   return (
-    <View style={styles.centeredView}>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-          setModalVisible(!modalVisible);
-        }}
-      >
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalText}>Choose the type of tip</Text>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => setModalVisible(!modalVisible)}
-            >
-              <Text style={styles.textStyle}>Verfied Tip</Text>
-            </Pressable>
-            <Text style={styles.modalText1}>
-              Your details will be visible to the authorities
-            </Text>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => setModalVisible(!modalVisible)}
-            >
-              <Text style={styles.textStyle}>Anonymous tip</Text>
-            </Pressable>
-            <Text style={styles.modalTex2}>Your identity remains hidden</Text>
-          </View>
+    <Modal
+      animationType="slide"
+      transparent={true}
+      visible={modalVisible}
+      onRequestClose={() => {
+        // Alert.alert("Modal has been closed.");
+        setModalVisible(!modalVisible);
+      }}
+    >
+      <View style={styles.centeredView}>
+        <View style={styles.modalView}>
+          <Text style={styles.modalText}>Choose the type of tip</Text>
+          <Pressable
+            style={[styles.button, styles.buttonClose]}
+            onPress={() => setModalVisible(!modalVisible)}
+          >
+            <Text style={styles.textStyle}>Verfied Tip</Text>
+          </Pressable>
+          <Text style={styles.modalText1}>
+            Your details will be visible to the authorities
+          </Text>
+          <Pressable
+            style={[styles.button, styles.buttonClose]}
+            onPress={() => setModalVisible(!modalVisible)}
+          >
+            <Text style={styles.textStyle}>Anonymous tip</Text>
+          </Pressable>
+          <Text style={styles.modalTex2}>Your identity remains hidden</Text>
         </View>
-      </Modal>
-      {/* <Pressable
-        style={[styles.button, styles.buttonOpen]}
-        onPress={() => setModalVisible(true)}
-      >
-        <Text style={styles.textStyle}>Show Modal</Text>
-      </Pressable> */}
-    </View>
+      </View>
+    </Modal>
   );
 };
 
@@ -65,6 +57,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
+    position: "absolute",
+    bottom: 38,
   },
   button: {
     borderRadius: 10,

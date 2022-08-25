@@ -31,10 +31,11 @@ const ProgressStepsProps = {
 };
 
 const Form = ({ navigation }) => {
-  const [hidepassword, setHidePassword] = useState(true);
-  const submitTip = async (values) => {
+  const submitTip = async (formData, user_id) => {
     try {
-      const d = (await axios.post(tip_api, values)).data;
+      const d = (
+        await axios.post(tip_api, { formData: formData, user_id: user_id })
+      ).data;
       console.log(d);
     } catch (err) {
       console.log(err);
@@ -43,9 +44,16 @@ const Form = ({ navigation }) => {
 
   return (
     <Formik
-      initialValues={{ email: "", password: "" }}
+      initialValues={{
+        crimeTime: "",
+        dateTime: "",
+        address: "",
+        regarding: "",
+        regardingTip: "",
+      }}
       onSubmit={(values) => {
         navigation.navigate("Login");
+        console.log(values);
         submitTip(values);
         console.log("submitted");
       }}
@@ -55,10 +63,14 @@ const Form = ({ navigation }) => {
           <View style={{ height: 30 }} />
           <ProgressSteps {...ProgressStepsProps}>
             <ProgressStep label="New Tip">
-              <CrimeDetailScreenOne></CrimeDetailScreenOne>
+              <CrimeDetailScreenOne
+                values={values}
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+              ></CrimeDetailScreenOne>
             </ProgressStep>
             <ProgressStep label="Regarding">
-              <TipRegardingScreen></TipRegardingScreen>
+              <TipRegardingScreen values={values}></TipRegardingScreen>
             </ProgressStep>
             <ProgressStep label="Crime Info">
               <TypeOfCrime></TypeOfCrime>

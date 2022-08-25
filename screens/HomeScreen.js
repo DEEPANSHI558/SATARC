@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Popup from "./Popup";
 import { useEffect } from "react";
 import {
   StyleSheet,
@@ -24,9 +25,11 @@ const HomeScreen = ({ navigation }) => {
 
   const minutes = Math.floor(tipTimeout / 60);
   const seconds = tipTimeout - minutes * 60;
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <View style={styles.container}>
+      <Popup modalVisible={showModal} setModalVisible={setShowModal}></Popup>
       <View style={styles.header}>
         <Text style={styles.headerText}>SATARC</Text>
       </View>
@@ -34,14 +37,14 @@ const HomeScreen = ({ navigation }) => {
         <View style={styles.alert}>
           <Text style={styles.alertText}>
             Your verification is pending, complete{" "}
-            <span
+            <Text
               style={{ textDecoration: "underline" }}
               onClick={() => {
                 navigation.navigate("verification");
               }}
             >
               user verification here
-            </span>
+            </Text>
             .
           </Text>
         </View>
@@ -57,7 +60,7 @@ const HomeScreen = ({ navigation }) => {
             <TouchableOpacity
               style={styles.styledButton}
               onPress={() => {
-                navigation.navigate("Form");
+                setShowModal(true);
               }}
             >
               <Text style={styles.buttonText}>SUBMIT A TIP</Text>
@@ -87,7 +90,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     backgroundColor: "white",
-    fontFamily: "Roboto, sans-serif",
+    // fontFamily: "Roboto, sans-serif",
     fontStyle: "normal",
   },
   header: {
