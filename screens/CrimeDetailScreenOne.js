@@ -14,12 +14,17 @@ import { RadioButton } from "react-native-paper";
 import SelectList from "react-native-dropdown-select-list";
 import FontAwesome from "react-native-fontawesome";
 
-const CrimeDetailsScreenOne = () => {
-  const [checked, setChecked] = React.useState("first");
-  const [addressChecked, setAddressChecked] = React.useState("haveAddress");
+const CrimeDetailsScreenOne = ({ values }) => {
+  const [checked, setChecked] = React.useState("yes");
+  const [addressChecked, setAddressChecked] = React.useState("notHaveAddress");
   const [selected, setSelectedState] = React.useState("");
   const [text, setText] = React.useState("");
+  const [isDisplayDate, setShow] = React.useState(false);
+  const [time, setTime] = React.useState("");
+  const [date, setDate] = React.useState("");
+  const [isDisplayAddressText, setAddShow] = React.useState(false);
   // console.log(addressChecked)
+
   // console.log(checked)
 
   const data = [
@@ -60,26 +65,54 @@ const CrimeDetailsScreenOne = () => {
     { Key: "UP", value: "Uttarakhand" },
     { Key: "WB", value: "West Bengal" },
   ];
-
+  console.log(values);
+  console.log(values.email);
+  values.date = date;
+  values.time = time;
+  values.address = text;
   return (
     <View style={styles.firstView}>
       <Text style={styles.crimeOccuringText}>
         Is the crime occuring right now?
       </Text>
+
       <View style={styles.firstRadioButtonView}>
         <RadioButton
-          status={checked === "first" ? "checked" : "unchecked"}
-          onPress={() => setChecked("first")}
+          status={checked === "yes" ? "checked" : "unchecked"}
+          onPress={() => {
+            setChecked("yes");
+            setShow(false);
+          }}
         />
         <Text style={{ position: "relative", top: 8 }}>Yes</Text>
       </View>
       <View style={styles.secondRadioButtonView}>
         <RadioButton
-          status={checked === "second" ? "checked" : "unchecked"}
-          onPress={() => setChecked("second")}
+          status={checked === "no" ? "checked" : "unchecked"}
+          onPress={() => {
+            setChecked("no");
+            setShow(true);
+          }}
         />
+
         <Text style={{ position: "relative", top: 8 }}>No</Text>
       </View>
+      {isDisplayDate && (
+        <View>
+          <TextInput
+            placeholder="Enter Date"
+            onChangeText={(newText) => setDate(newText)}
+            style={styles.takenTextInput}
+          />
+          <input type="datetime-local" id="birthdaytime" name="birthdaytime" />
+          <TextInput
+            placeholder="Enter Time"
+            style={styles.takenTextInput}
+            onChangeText={(newText) => setTime(newText)}
+          />
+        </View>
+      )}
+
       <Text style={styles.stateCrimeOccuringText}>
         What state was this crime in?
       </Text>
@@ -88,8 +121,6 @@ const CrimeDetailsScreenOne = () => {
           onSelect={() => alert(selected)}
           setSelected={setSelectedState}
           data={data}
-          // arrowicon={<FontAwesome name="Roboto" size={12} color={'black'} />}
-          // searchicon={<FontAwesome name="Roboto" size={12} color={'black'} />}
           search={true}
           boxStyles={{ borderRadius: 0 }}
           placeholder="Select state"
@@ -112,24 +143,35 @@ const CrimeDetailsScreenOne = () => {
       <View style={styles.firstAddressRadioButtonView}>
         <RadioButton
           status={addressChecked === "haveAddress" ? "checked" : "unchecked"}
-          onPress={() => setAddressChecked("haveAddress")}
+          onPress={() => {
+            setAddressChecked("haveAddress");
+            setAddShow(true);
+          }}
         />
         <Text style={{ position: "relative", top: 8 }}>Yes</Text>
       </View>
       <View style={styles.secondAddressRadioButtonView}>
         <RadioButton
           status={addressChecked === "notHaveAddress" ? "checked" : "unchecked"}
-          onPress={() => setAddressChecked("notHaveAddress")}
+          onPress={() => {
+            setAddressChecked("notHaveAddress");
+            setAddShow(false);
+          }}
         />
         <Text style={{ position: "relative", top: 8 }}>No</Text>
       </View>
-      <View style={styles.textInputView}>
-        <TextInput
-          placeholder="Enter Address"
-          onChangeText={(newText) => setText(newText)}
-          style={styles.textInput}
-        />
-      </View>
+      {isDisplayAddressText && (
+        <View style={styles.textInputView}>
+          <TextInput
+            placeholder="Enter Address"
+            // value={text}
+            onChange={(newText) => {
+              setText(newText);
+            }}
+            style={styles.textInput}
+          />
+        </View>
+      )}
     </View>
   );
 };
@@ -236,6 +278,18 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     solid: "#919191",
     borderradius: 5,
+    backgroundColor: "transparent",
+  },
+  takenTextInput: {
+    // margin:10,
+    width: "auto",
+    height: 50,
+    backgroundColor: "#FCFAFA",
+    borderWidth: 1,
+    solid: "#919191",
+    borderRadius: 5,
+    margin: 10,
+    textAlign: "center",
     backgroundColor: "transparent",
   },
 });
