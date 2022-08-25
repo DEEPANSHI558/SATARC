@@ -45,11 +45,8 @@ const Form = ({ navigation }) => {
   return (
     <Formik
       initialValues={{
-        email: "singh",
-        password: "",
         crimeTime: "",
         dateTime: "",
-
         address: "",
         regarding: "",
         regardingTip: "",

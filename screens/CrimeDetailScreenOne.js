@@ -122,17 +122,17 @@ const CrimeDetailsScreenOne = ({ values }) => {
               fontSize: "20px",
             }}
             value={dateTime}
-            onChange={(event) => setDate(event.target.value)}
+            onChange={(event) => {
+              setDate(new Date(event.target.value).getTime());
+            }}
           />
         </View>
       )}
 
-      <Text style={styles.stateCrimeOccuringText}>
-        What state was this crime in?
-      </Text>
+      <Text style={styles.stateCrimeOccuringText}>What is the location</Text>
       <View style={styles.stateSelectionView}>
         <SelectList
-          onSelect={() => alert(selected)}
+          // onSelect={() => alert(selected)}
           setSelected={setSelectedState}
           data={data}
           search={true}
@@ -140,10 +140,10 @@ const CrimeDetailsScreenOne = ({ values }) => {
           placeholder="Select state"
         />
       </View>
-      <Text style={styles.cityCrimeOccuringText}>What city?</Text>
-      <View style={styles.citySelectionView}>
+      {/* <Text style={styles.cityCrimeOccuringText}>What city?</Text> */}
+      {/* <View style={styles.citySelectionView}>
         <SelectList
-          onSelect={() => alert(selected)}
+          // onSelect={() => alert(selected)}
           setSelected={setSelectedState}
           data={data}
           // arrowicon={<FontAwesome name="Roboto" size={12} color={'black'} />}
@@ -152,7 +152,7 @@ const CrimeDetailsScreenOne = ({ values }) => {
           boxStyles={{ borderRadius: 0 }}
           placeholder="Select city"
         />
-      </View>
+      </View> */}
       <Text style={styles.exactAddress}>Do you have an exact address??</Text>
       <View style={styles.firstAddressRadioButtonView}>
         <RadioButton

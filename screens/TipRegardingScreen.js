@@ -14,51 +14,12 @@ import { CheckBox } from "react-native-elements";
 import { RadioButton } from "react-native-paper";
 
 const TipRegardingScreen = ({ values }) => {
-  const [individual, setIndividual] = React.useState(false);
-  const [organisation, setOrganisation] = React.useState(false);
-  const [fraud, setFraud] = React.useState(false);
-  const [school, setSchool] = React.useState(false);
-  const [other, setOther] = React.useState(false);
   const [checked, setChecked] = React.useState("individual");
-  console.log(checked);
+  values.regarding = checked;
+  console.log(values);
   return (
     <View style={styles.firstView}>
       <Text style={styles.tipReagardingText}>What is this tip regarding?</Text>
-      {/* <CheckBox
-        title="Individual"
-        checkedColor="green"
-        checked={individual}
-        onPress={() => setIndividual(!individual)}
-        containerStyle={styles.individualContainer}
-      /> */}
-      {/* <CheckBox
-        title="Organisation"
-        checkedColor="green"
-        checked={organisation}
-        onPress={() => setOrganisation(!organisation)}
-        containerStyle={styles.organisationContainer}
-      />
-      <CheckBox
-        title="Fraud"
-        checkedColor="green"
-        checked={fraud}
-        onPress={() => setFraud(!fraud)}
-        containerStyle={styles.fraudContainer}
-      />
-      <CheckBox
-        title="School"
-        checkedColor="green"
-        checked={school}
-        onPress={() => setSchool(!school)}
-        containerStyle={styles.schoolContainer}
-      />
-      <CheckBox
-        title="Other"
-        checkedColor="green"
-        checked={other}
-        onPress={() => setOther(!other)}
-        containerStyle={styles.otherContainer}
-      /> */}
       <View>
         <View style={styles.firstRadioButtonView}>
           <RadioButton
@@ -76,14 +37,14 @@ const TipRegardingScreen = ({ values }) => {
           />
           <Text style={{ position: "relative", top: 8 }}>Organization</Text>
         </View>
-        <View style={styles.firstRadioButtonView}>
+        {/* <View style={styles.firstRadioButtonView}>
           <RadioButton
             value="third"
             status={checked === "fraud" ? "checked" : "unchecked"}
             onPress={() => setChecked("fraud")}
           />
           <Text style={{ position: "relative", top: 8 }}>Fraud</Text>
-        </View>
+        </View> */}
         <View style={styles.firstRadioButtonView}>
           <RadioButton
             value="fourth"
