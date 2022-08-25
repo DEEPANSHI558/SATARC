@@ -20,8 +20,8 @@ const CrimeDetailsScreenOne = ({ values }) => {
   const [selected, setSelectedState] = React.useState("");
   const [text, setText] = React.useState("");
   const [isDisplayDate, setShow] = React.useState(false);
-  const [time, setTime] = React.useState("");
-  const [date, setDate] = React.useState("");
+
+  const [dateTime, setDate] = React.useState("");
   const [isDisplayAddressText, setAddShow] = React.useState(false);
   // console.log(addressChecked)
 
@@ -67,8 +67,8 @@ const CrimeDetailsScreenOne = ({ values }) => {
   ];
   console.log(values);
   console.log(values.email);
-  values.date = date;
-  values.time = time;
+  values.dateTime = dateTime;
+
   values.address = text;
   return (
     <View style={styles.firstView}>
@@ -99,16 +99,30 @@ const CrimeDetailsScreenOne = ({ values }) => {
       </View>
       {isDisplayDate && (
         <View>
-          <TextInput
+          {/* <TextInput
             placeholder="Enter Date"
             onChangeText={(newText) => setDate(newText)}
             style={styles.takenTextInput}
-          />
-          <input type="datetime-local" id="birthdaytime" name="birthdaytime" />
-          <TextInput
-            placeholder="Enter Time"
-            style={styles.takenTextInput}
-            onChangeText={(newText) => setTime(newText)}
+          /> */}
+          <input
+            type="datetime-local"
+            id="birthdaytime"
+            name="birthdaytime"
+            style={{
+              width: "auto",
+              height: "50px",
+              backgroundColor: "#FCFAFA",
+              borderWidth: "1px",
+              solid: "#919191",
+              borderRadius: "5px",
+              margin: "10px",
+              textAlign: "center",
+              backgroundColor: "transparent",
+              fontFamily: "Roboto mono",
+              fontSize: "20px",
+            }}
+            value={dateTime}
+            onChange={(event) => setDate(event.target.value)}
           />
         </View>
       )}
@@ -160,18 +174,17 @@ const CrimeDetailsScreenOne = ({ values }) => {
         />
         <Text style={{ position: "relative", top: 8 }}>No</Text>
       </View>
-      {isDisplayAddressText && (
-        <View style={styles.textInputView}>
-          <TextInput
-            placeholder="Enter Address"
-            // value={text}
-            onChange={(newText) => {
-              setText(newText);
-            }}
-            style={styles.textInput}
-          />
-        </View>
-      )}
+
+      <View style={styles.textInputView}>
+        <TextInput
+          placeholder="Enter Address"
+          // value={text}
+          onChange={(newText) => {
+            setText(newText);
+          }}
+          style={styles.textInput}
+        />
+      </View>
     </View>
   );
 };

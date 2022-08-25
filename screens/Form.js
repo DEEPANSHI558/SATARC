@@ -48,8 +48,8 @@ const Form = ({ navigation }) => {
         email: "singh",
         password: "",
         crimeTime: "",
-        date: "",
-        time: "",
+        dateTime: "",
+
         address: "",
         regarding: "",
         regardingTip: "",
