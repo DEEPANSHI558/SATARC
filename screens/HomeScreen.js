@@ -29,7 +29,7 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Popup modalVisible={showModal} setModalVisible={setShowModal}></Popup>
+      <Popup modalVisible={showModal} setModalVisible={setShowModal} navigation={navigation} ></Popup>
       <View style={styles.header}>
         <Text style={styles.headerText}>SATARC</Text>
       </View>

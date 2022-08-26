@@ -199,12 +199,12 @@ const styles = StyleSheet.create({
     // paddingBottom: 300,
     height: 80,
     width: "100%",
-    // backgroundColor: "black",
+   backgroundColor: "black",
   },
   otpinvalidContainer: {
     height: 500,
     width: "100%",
-    // backgroundColor: "black",
+    backgroundColor: "black",
   },
   line: {
     height: 1,

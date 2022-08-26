@@ -38,7 +38,7 @@ const Welcome = ({ navigation }) => {
           The most effective, anonymous reporting system for crime in the
           nation.
         </Text>
-        <Popup modalVisible={showModal} setModalVisible={setShowModal}></Popup>
+        <Popup modalVisible={showModal} setModalVisible={setShowModal} navigation={navigation}></Popup>
         <View style={styles.styledformArea}>
           <View style={styles.avatarView}>
             <Image
