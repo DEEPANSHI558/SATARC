@@ -34,7 +34,7 @@ const TypeOfCrime = ({ formData, setFormData }) => {
 
   useEffect(() => {
     console.log(formData);
-  }, [vehicle]);
+  }, [formData]);
 
   return (
     <View style={styles.firstView}>
@@ -53,7 +53,7 @@ const TypeOfCrime = ({ formData, setFormData }) => {
           setSuspect(true);
           setFormData({
             ...formData,
-            suspect: suspect,
+            suspect: true,
           });
         }}
         containerStyle={styles.drugRelated1Container}
@@ -66,7 +66,7 @@ const TypeOfCrime = ({ formData, setFormData }) => {
           setSuspect(false);
           setFormData({
             ...formData,
-            suspect: suspect,
+            suspect: false,
           });
         }}
         containerStyle={styles.drugRelated1Container}
@@ -82,7 +82,7 @@ const TypeOfCrime = ({ formData, setFormData }) => {
           setVehicle("true");
           setFormData({
             ...formData,
-            vehicle: vehicle,
+            vehicle: true,
           });
         }}
         containerStyle={styles.drugRelated1Container}
@@ -95,7 +95,7 @@ const TypeOfCrime = ({ formData, setFormData }) => {
           setVehicle("false");
           setFormData({
             ...formData,
-            vehicle: vehicle,
+            vehicle: false,
           });
         }}
         containerStyle={styles.drugRelated1Container}
@@ -105,11 +105,10 @@ const TypeOfCrime = ({ formData, setFormData }) => {
       </View>
       <TextInput
         placeholder="Describe the suspect"
-        onChangeText={(newText) => {
-          setwhatWasText(newText);
+        onChangeText={(text) => {
           setFormData({
             ...formData,
-            suspect_info: newText,
+            suspect_info: text,
           });
         }}
         style={styles.takenTextInput}

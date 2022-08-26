@@ -46,10 +46,8 @@ const TypeOfCrime = ({ formData, setFormData }) => {
         checked={crime === "drug_trafficking"}
         onPress={() => {
           setCrime("drug_trafficking");
-          setFormData({
-            ...formData,
-            crime_type: crime,
-          });
+
+          setFormData({ ...formData, crime_type: "drug_trafficking" });
         }}
         containerStyle={styles.drugRelated1Container}
       />
@@ -61,7 +59,7 @@ const TypeOfCrime = ({ formData, setFormData }) => {
           setCrime("drug_abuse");
           setFormData({
             ...formData,
-            crime_type: crime,
+            crime_type: "drug_abuse",
           });
         }}
         containerStyle={styles.drugRelated1Container}
@@ -74,7 +72,7 @@ const TypeOfCrime = ({ formData, setFormData }) => {
           setCrime("drug_production");
           setFormData({
             ...formData,
-            crime_type: crime,
+            crime_type: "drug_production",
           });
         }}
         containerStyle={styles.drugRelated1Container}
@@ -87,7 +85,7 @@ const TypeOfCrime = ({ formData, setFormData }) => {
           setCrime("theft");
           setFormData({
             ...formData,
-            crime_type: crime,
+            crime_type: "theft",
           });
         }}
         containerStyle={styles.drugRelatedContainer}
@@ -100,7 +98,7 @@ const TypeOfCrime = ({ formData, setFormData }) => {
           setCrime("theft");
           setFormData({
             ...formData,
-            crime_type: crime,
+            crime_type: "self_harm",
           });
         }}
         containerStyle={styles.drugRelatedContainer}
@@ -116,7 +114,7 @@ const TypeOfCrime = ({ formData, setFormData }) => {
           setCrime("molestation");
           setFormData({
             ...formData,
-            crime_type: crime,
+            crime_type: "molestation",
           });
         }}
         containerStyle={styles.drugRelated1Container}
@@ -129,7 +127,7 @@ const TypeOfCrime = ({ formData, setFormData }) => {
           setCrime("rape");
           setFormData({
             ...formData,
-            crime_type: crime,
+            crime_type: "rape",
           });
         }}
         containerStyle={styles.drugRelated1Container}
@@ -142,7 +140,7 @@ const TypeOfCrime = ({ formData, setFormData }) => {
           setCrime("prostitution");
           setFormData({
             ...formData,
-            crime_type: crime,
+            crime_type: "prostitution",
           });
         }}
         containerStyle={styles.drugRelated1Container}
@@ -156,7 +154,7 @@ const TypeOfCrime = ({ formData, setFormData }) => {
           setCrime("vandalism");
           setFormData({
             ...formData,
-            crime_type: crime,
+            crime_type: "vandalism",
           });
         }}
         containerStyle={styles.drugRelatedContainer}
@@ -172,7 +170,7 @@ const TypeOfCrime = ({ formData, setFormData }) => {
           setCrime("terrorism");
           setFormData({
             ...formData,
-            crime_type: crime,
+            crime_type: "terrorism",
           });
         }}
         containerStyle={styles.drugRelated1Container}
@@ -185,7 +183,7 @@ const TypeOfCrime = ({ formData, setFormData }) => {
           setCrime("bomb_threat");
           setFormData({
             ...formData,
-            crime_type: crime,
+            crime_type: "bomb_threat",
           });
         }}
         containerStyle={styles.drugRelated1Container}
@@ -198,7 +196,7 @@ const TypeOfCrime = ({ formData, setFormData }) => {
           setCrime("missing");
           setFormData({
             ...formData,
-            crime_type: crime,
+            crime_type: "missing",
           });
         }}
         containerStyle={styles.drugRelatedContainer}
@@ -211,7 +209,7 @@ const TypeOfCrime = ({ formData, setFormData }) => {
           setCrime("road_rage");
           setFormData({
             ...formData,
-            crime_type: crime,
+            crime_type: "road_rage",
           });
         }}
         containerStyle={styles.drugRelatedContainer}

@@ -42,11 +42,12 @@ const Form = ({ navigation }) => {
     suspect_info: "",
     suspect: "",
   });
-  const submitTip = async (formData, user_id) => {
+
+  const handleSubmit = async () => {
     try {
-      const d = (
-        await axios.post(tip_api, { formData: formData, user_id: user_id })
-      ).data;
+      console.log("my out", formData);
+      const d = await axios.post(tip_api, { formData }).data;
+      console.log(d);
       navigation.navigate("Task");
     } catch (err) {
       console.log(err);
@@ -54,42 +55,23 @@ const Form = ({ navigation }) => {
   };
 
   return (
-    <Formik
-      initialValues={formData}
-      onSubmit={(data) => {
-        console.log(data);
-        submitTip(data);
-      }}
-    >
-      {({ handleSubmit }) => (
-        <View style={styles.firstView}>
-          <View style={{ height: 30 }} />
-          <ProgressSteps {...ProgressStepsProps}>
-            <ProgressStep label="New Tip">
-              <CrimeDetailScreenOne
-                formData={formData}
-                setFormData={setFormData}
-              />
-            </ProgressStep>
-            <ProgressStep label="Regarding">
-              <TipRegardingScreen
-                formData={formData}
-                setFormData={setFormData}
-              />
-            </ProgressStep>
-            <ProgressStep label="Crime Info">
-              <TypeOfCrime formData={formData} setFormData={setFormData} />
-            </ProgressStep>
-            <ProgressStep label="Suspect Info" onSubmit={handleSubmit}>
-              <SuspectInfoScreen
-                formData={formData}
-                setFormData={setFormData}
-              />
-            </ProgressStep>
-          </ProgressSteps>
-        </View>
-      )}
-    </Formik>
+    <View style={styles.firstView}>
+      <View style={{ height: 30 }} />
+      <ProgressSteps {...ProgressStepsProps}>
+        <ProgressStep label="New Tip">
+          <CrimeDetailScreenOne formData={formData} setFormData={setFormData} />
+        </ProgressStep>
+        <ProgressStep label="Regarding">
+          <TipRegardingScreen formData={formData} setFormData={setFormData} />
+        </ProgressStep>
+        <ProgressStep label="Crime Info">
+          <TypeOfCrime formData={formData} setFormData={setFormData} />
+        </ProgressStep>
+        <ProgressStep label="Suspect Info" onSubmit={handleSubmit}>
+          <SuspectInfoScreen formData={formData} setFormData={setFormData} />
+        </ProgressStep>
+      </ProgressSteps>
+    </View>
   );
 };
 
