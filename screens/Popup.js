@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
 
-const Popup = ({ modalVisible,setModalVisible, navigation}) => {
+const Popup = ({ modalVisible, setModalVisible, navigation }) => {
   return (
     <Modal
       animationType="slide"
@@ -17,8 +17,10 @@ const Popup = ({ modalVisible,setModalVisible, navigation}) => {
           <Text style={styles.modalText}>Choose the type of tip</Text>
           <Pressable
             style={[styles.button, styles.buttonClose]}
-            onPress={() => {setModalVisible(!modalVisible);
-            navigation.navigate("Form")}}
+            onPress={() => {
+              setModalVisible(!modalVisible);
+              navigation.navigate("Form");
+            }}
           >
             <Text style={styles.textStyle}>Verfied Tip</Text>
           </Pressable>
@@ -27,8 +29,10 @@ const Popup = ({ modalVisible,setModalVisible, navigation}) => {
           </Text>
           <Pressable
             style={[styles.button, styles.buttonClose]}
-            onPress={() => {setModalVisible(!modalVisible);
-            navigation.navigate("Login")}}
+            onPress={() => {
+              setModalVisible(!modalVisible);
+              navigation.navigate("Form");
+            }}
           >
             <Text style={styles.textStyle}>Anonymous tip</Text>
           </Pressable>

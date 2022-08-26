@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { render } from "react-dom";
 import {
   View,
@@ -12,7 +12,7 @@ import {
 } from "react-native";
 import { CheckBox } from "react-native-elements";
 
-const TypeOfCrime = () => {
+const TypeOfCrime = ({ formData, setFormData }) => {
   const [drugRelated, setdrugRelated] = React.useState(false);
   const [drugRealatedValue, setdrugRelatedValue] = React.useState("");
 
@@ -28,93 +28,207 @@ const TypeOfCrime = () => {
   const [prostitutionCrimes, setProstitutionCrimes] = React.useState(false);
   const [whatWasText, setwhatWasText] = React.useState("");
   const [suspectText, setSuspectText] = React.useState("");
+  const [crime, setCrime] = useState("");
+  useEffect(() => {
+    console.log(formData);
+  }, [crime]);
 
   return (
     <View style={styles.firstView}>
       <Text style={styles.TypeOfCrimeText}>What is the type of crime?</Text>
       <Text style={styles.allThatApllyText}>Please select all that apply</Text>
-
+      <View>
+        <Text style={{ fontWeight: "bold" }}>Drug Related</Text>
+      </View>
       <CheckBox
-        title="Drug Raleted"
+        title="Drug Trafficking"
         checkedColor="green"
-        checked={drugRelated}
-        onPress={() => setFraud(!drugRelated)}
-        containerStyle={styles.drugRelatedContainer}
-      />
-      <CheckBox
-        title="Drug Raleted1"
-        checkedColor="green"
-        checked={drugRelated1}
-        onPress={() => setdrugRelated1(!drugRelated1)}
+        checked={crime === "drug_trafficking"}
+        onPress={() => {
+          setCrime("drug_trafficking");
+          setFormData({
+            ...formData,
+            crime_type: crime,
+          });
+        }}
         containerStyle={styles.drugRelated1Container}
       />
       <CheckBox
-        title="Drug Raleted2"
+        title="Drug Abuse"
         checkedColor="green"
-        checked={drugRelated2}
-        onPress={() => setdrugRelated2(!drugRelated2)}
-        containerStyle={styles.drugRelated2Container}
+        checked={crime === "drug_abuse"}
+        onPress={() => {
+          setCrime("drug_abuse");
+          setFormData({
+            ...formData,
+            crime_type: crime,
+          });
+        }}
+        containerStyle={styles.drugRelated1Container}
       />
       <CheckBox
-        title="Drug Related3"
+        title="Drug Production"
         checkedColor="green"
-        checked={drugRelated3}
-        onPress={() => setdrugRelated3(!drugRelated3)}
-        containerStyle={styles.drugRelated3Container}
+        checked={crime === "drug_production"}
+        onPress={() => {
+          setCrime("drug_production");
+          setFormData({
+            ...formData,
+            crime_type: crime,
+          });
+        }}
+        containerStyle={styles.drugRelated1Container}
       />
       <CheckBox
         title="Theft"
         checkedColor="green"
-        checked={theft}
-        onPress={() => setTheft(!theft)}
-        containerStyle={styles.theftContainer}
-      />
-      <Text style={styles.takenText}>What was taken?</Text>
-      <TextInput
-        placeholder="Describe"
-        onChangeText={(newText) => setwhatWasText(newText)}
-        style={styles.takenTextInput}
-      />
-      <Text style={styles.takenText1}>How did Suspect take it?</Text>
-      <TextInput
-        placeholder="Describe"
-        onChangeText={(newText) => setSuspectText(newText)}
-        style={styles.takenTextInput}
+        checked={crime === "theft"}
+        onPress={() => {
+          setCrime("theft");
+          setFormData({
+            ...formData,
+            crime_type: crime,
+          });
+        }}
+        containerStyle={styles.drugRelatedContainer}
       />
       <CheckBox
-        title="Self Harm"
+        title="Self harm"
         checkedColor="green"
-        checked={selfHarm}
-        onPress={() => setSelfHarm(!selfHarm)}
-        containerStyle={styles.selfHarmContainer}
+        checked={crime === "self_harm"}
+        onPress={() => {
+          setCrime("theft");
+          setFormData({
+            ...formData,
+            crime_type: crime,
+          });
+        }}
+        containerStyle={styles.drugRelatedContainer}
       />
-      <CheckBox
-        title="Sex Crimes"
-        checkedColor="green"
-        checked={sexCrimes}
-        onPress={() => setSexCrimes(!sexCrimes)}
-        containerStyle={styles.sexCrimesContainer}
-      />
+      <View>
+        <Text style={{ fontWeight: "bold" }}>Sex Crimes</Text>
+      </View>
       <CheckBox
         title="Molestation"
         checkedColor="green"
-        checked={molestationCrimes}
-        onPress={() => setMolestationCrimes(!molestationCrimes)}
-        containerStyle={styles.molestationCrimesContainer}
+        checked={crime === "molestation"}
+        onPress={() => {
+          setCrime("molestation");
+          setFormData({
+            ...formData,
+            crime_type: crime,
+          });
+        }}
+        containerStyle={styles.drugRelated1Container}
       />
       <CheckBox
         title="Rape"
         checkedColor="green"
-        checked={rapeCrimes}
-        onPress={() => setRapeCrimes(!rapeCrimes)}
-        containerStyle={styles.rapeCrimesContainer}
+        checked={crime === "rape"}
+        onPress={() => {
+          setCrime("rape");
+          setFormData({
+            ...formData,
+            crime_type: crime,
+          });
+        }}
+        containerStyle={styles.drugRelated1Container}
       />
       <CheckBox
         title="Prostitution"
         checkedColor="green"
-        checked={prostitutionCrimes}
-        onPress={() => setProstitutionCrimes(!prostitutionCrimes)}
-        containerStyle={styles.prostitutionCrimesContainer}
+        checked={crime === "prostitution"}
+        onPress={() => {
+          setCrime("prostitution");
+          setFormData({
+            ...formData,
+            crime_type: crime,
+          });
+        }}
+        containerStyle={styles.drugRelated1Container}
+      />
+
+      <CheckBox
+        title="Vandalism"
+        checkedColor="green"
+        checked={crime === "vandalism"}
+        onPress={() => {
+          setCrime("vandalism");
+          setFormData({
+            ...formData,
+            crime_type: crime,
+          });
+        }}
+        containerStyle={styles.drugRelatedContainer}
+      />
+      <View>
+        <Text style={{ fontWeight: "bold" }}>Threat to National Security</Text>
+      </View>
+      <CheckBox
+        title="Terrorism"
+        checkedColor="green"
+        checked={crime === "terrorism"}
+        onPress={() => {
+          setCrime("terrorism");
+          setFormData({
+            ...formData,
+            crime_type: crime,
+          });
+        }}
+        containerStyle={styles.drugRelated1Container}
+      />
+      <CheckBox
+        title="Bomb Threat"
+        checkedColor="green"
+        checked={crime === "bomb_threat"}
+        onPress={() => {
+          setCrime("bomb_threat");
+          setFormData({
+            ...formData,
+            crime_type: crime,
+          });
+        }}
+        containerStyle={styles.drugRelated1Container}
+      />
+      <CheckBox
+        title="Report Wanted, Missing Person/Item"
+        checkedColor="green"
+        checked={crime === "missing"}
+        onPress={() => {
+          setCrime("missing");
+          setFormData({
+            ...formData,
+            crime_type: crime,
+          });
+        }}
+        containerStyle={styles.drugRelatedContainer}
+      />
+      <CheckBox
+        title="Report Road Rage"
+        checkedColor="green"
+        checked={crime === "road_rage"}
+        onPress={() => {
+          setCrime("road_rage");
+          setFormData({
+            ...formData,
+            crime_type: crime,
+          });
+        }}
+        containerStyle={styles.drugRelatedContainer}
+      />
+      <View>
+        <Text style={{ fontWeight: "bold" }}>Provide a description</Text>
+      </View>
+      <TextInput
+        placeholder="Describe"
+        onChangeText={(newText) => {
+          setwhatWasText(newText);
+          setFormData({
+            ...formData,
+            description: newText,
+          });
+        }}
+        style={styles.takenTextInput}
       />
     </View>
   );

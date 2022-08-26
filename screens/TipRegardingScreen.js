@@ -13,55 +13,63 @@ import {
 import { CheckBox } from "react-native-elements";
 import { RadioButton } from "react-native-paper";
 
-const TipRegardingScreen = ({ values }) => {
-  const [checked, setChecked] = React.useState("individual");
-  values.regarding = checked;
-  console.log(values);
+const TipRegardingScreen = ({ formData, setFormData }) => {
+  const [regarding, setRegarding] = React.useState("");
+
   return (
     <View style={styles.firstView}>
       <Text style={styles.tipReagardingText}>What is this tip regarding?</Text>
-      <View>
-        <View style={styles.firstRadioButtonView}>
-          <RadioButton
-            value="first"
-            status={checked === "individual" ? "checked" : "unchecked"}
-            onPress={() => setChecked("individual")}
-          />
-          <Text style={{ position: "relative", top: 8 }}>Individual</Text>
-        </View>
-        <View style={styles.firstRadioButtonView}>
-          <RadioButton
-            value="second"
-            status={checked === "organization" ? "checked" : "unchecked"}
-            onPress={() => setChecked("organization")}
-          />
-          <Text style={{ position: "relative", top: 8 }}>Organization</Text>
-        </View>
-        {/* <View style={styles.firstRadioButtonView}>
-          <RadioButton
-            value="third"
-            status={checked === "fraud" ? "checked" : "unchecked"}
-            onPress={() => setChecked("fraud")}
-          />
-          <Text style={{ position: "relative", top: 8 }}>Fraud</Text>
-        </View> */}
-        <View style={styles.firstRadioButtonView}>
-          <RadioButton
-            value="fourth"
-            status={checked === "school" ? "checked" : "unchecked"}
-            onPress={() => setChecked("school")}
-          />
-          <Text style={{ position: "relative", top: 8 }}>School</Text>
-        </View>
-        <View style={styles.firstRadioButtonView}>
-          <RadioButton
-            value="fourth"
-            status={checked === "other" ? "checked" : "unchecked"}
-            onPress={() => setChecked("other")}
-          />
-          <Text style={{ position: "relative", top: 8 }}>Other</Text>
-        </View>
-      </View>
+      <CheckBox
+        title="Individual"
+        checkedColor="green"
+        checked={regarding === "Individual"}
+        onPress={() => {
+          setRegarding("Individual");
+          setFormData({ ...formData, regarding: "Individual" });
+        }}
+        containerStyle={styles.individualContainer}
+      />
+      <CheckBox
+        title="Organisation"
+        checkedColor="green"
+        checked={regarding === "Organisation"}
+        onPress={() => {
+          setRegarding("Organisation");
+          setFormData({ ...formData, regarding: "Organisation" });
+        }}
+        containerStyle={styles.organisationContainer}
+      />
+      <CheckBox
+        title="Fraud"
+        checkedColor="green"
+        checked={regarding === "Fraud"}
+        onPress={() => {
+          setRegarding("Fraud");
+          setFormData({ ...formData, regarding: "Fraud" });
+        }}
+        containerStyle={styles.fraudContainer}
+      />
+      <CheckBox
+        title="School"
+        checkedColor="green"
+        checked={regarding === "School"}
+        onPress={() => {
+          setRegarding("School");
+          setFormData({ ...formData, regarding: "School" });
+        }}
+        containerStyle={styles.schoolContainer}
+      />
+      <CheckBox
+        title="Other"
+        checkedColor="green"
+        checked={regarding === "Other"}
+        onPress={() => {
+          setRegarding("Other");
+          setFormData({ ...formData, regarding: "Other" });
+        }}
+        containerStyle={styles.otherContainer}
+      />
+      {console.log(formData)}
     </View>
   );
 };

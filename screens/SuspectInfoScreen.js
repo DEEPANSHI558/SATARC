@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { render } from "react-dom";
 import {
   View,
@@ -11,101 +11,114 @@ import {
   Image,
 } from "react-native";
 import { CheckBox } from "react-native-elements";
-import { RadioButton } from "react-native-paper";
-import { launchImageLibrary } from "react-native-image-picker";
 
-const SuspectInfoScreen = () => {
-  const setToastMsg = (msg) => {
-    ToastAndroid.showWithGravity(msg, ToastAndroid.SHORT, ToastAndroid.CENTER);
-  };
+const TypeOfCrime = ({ formData, setFormData }) => {
+  const [drugRelated, setdrugRelated] = React.useState(false);
+  const [drugRealatedValue, setdrugRelatedValue] = React.useState("");
 
-  const uploadFile = () => {
-    let options = {
-      mediaType: "photo",
-      quality: 1,
-      includeBase64: true,
-    };
-    launchImageLibrary(options, (response) => {
-      if (response.didCancel) {
-        setToastMsg("Cancelled Image Selection");
-      } else if ((response.errorCode = "permission")) {
-        setToastMsg("Permission not satisfied");
-      } else if ((response.errorCode = "others")) {
-        setToastMsg(response.errorMessage);
-      } else if (response.assets[0].fileSize > 2097152) {
-        Alert.alert(
-          "Maximum image size exceeded",
-          "Please choose image under 2 MB",
-          [{ text: "OK" }]
-        );
-      }
-    });
-    // .catch(error=>{
-    //   console.log(error);
-    // })
-  };
+  const [drugRelated1, setdrugRelated1] = React.useState(false);
 
-  const [inforRegardingSuspect, setinforRegardingSuspect] =
-    React.useState("first");
-  const [inforRegardingVehicle, setinforRegardingVehicle] =
-    React.useState("first");
+  const [drugRelated2, setdrugRelated2] = React.useState(false);
+  const [drugRelated3, setdrugRelated3] = React.useState(false);
+  const [theft, setTheft] = React.useState(false);
+  const [selfHarm, setSelfHarm] = React.useState(false);
+  const [sexCrimes, setSexCrimes] = React.useState(false);
+  const [molestationCrimes, setMolestationCrimes] = React.useState(false);
+  const [rapeCrimes, setRapeCrimes] = React.useState(false);
+  const [prostitutionCrimes, setProstitutionCrimes] = React.useState(false);
+  const [whatWasText, setwhatWasText] = React.useState("");
+  const [suspectText, setSuspectText] = React.useState("");
+  const [crime, setCrime] = useState("");
+  const [suspect, setSuspect] = useState(null);
+  const [vehicle, setVehicle] = useState("");
+
+  useEffect(() => {
+    console.log(formData);
+  }, [vehicle]);
 
   return (
     <View style={styles.firstView}>
-      <Text style={styles.inforRegardingSuspect}>
-        Do you have info regarding the suspect?
-      </Text>
-      <View style={styles.firstRadioButtonView}>
-        <RadioButton
-          status={inforRegardingSuspect === "first" ? "checked" : "unchecked"}
-          onPress={() => setinforRegardingSuspect("first")}
-        />
-        <Text style={{ position: "relative", top: 8 }}>Yes</Text>
+      <Text style={styles.TypeOfCrimeText}>Please select all that apply</Text>
+      <Text style={styles.allThatApllyText}></Text>
+      <View>
+        <Text style={{ fontWeight: "bold" }}>
+          Do you have info regarding the suspect?
+        </Text>
       </View>
-      <View style={styles.secondRadioButtonView}>
-        <RadioButton
-          status={inforRegardingSuspect === "second" ? "checked" : "unchecked"}
-          onPress={() => setinforRegardingSuspect("second")}
-        />
-        <Text style={{ position: "relative", top: 8 }}>No</Text>
+      <CheckBox
+        title="Yes"
+        checkedColor="green"
+        checked={suspect === true}
+        onPress={() => {
+          setSuspect(true);
+          setFormData({
+            ...formData,
+            suspect: suspect,
+          });
+        }}
+        containerStyle={styles.drugRelated1Container}
+      />
+      <CheckBox
+        title="No"
+        checkedColor="green"
+        checked={suspect === false}
+        onPress={() => {
+          setSuspect(false);
+          setFormData({
+            ...formData,
+            suspect: suspect,
+          });
+        }}
+        containerStyle={styles.drugRelated1Container}
+      />
+      <View>
+        <Text style={{ fontWeight: "bold" }}>Is there a vehicle involved?</Text>
       </View>
-      <Text style={styles.vehicleInvolvedText}>
-        Is there a vehicle involved?
-      </Text>
-      <View style={styles.vehicleInvolvedFirst}>
-        <RadioButton
-          status={inforRegardingVehicle === "first" ? "checked" : "unchecked"}
-          onPress={() => setinforRegardingVehicle("first")}
-        />
-        <Text style={{ position: "relative", top: 8 }}>Yes</Text>
+      <CheckBox
+        title="Yes"
+        checkedColor="green"
+        checked={vehicle === "true"}
+        onPress={() => {
+          setVehicle("true");
+          setFormData({
+            ...formData,
+            vehicle: vehicle,
+          });
+        }}
+        containerStyle={styles.drugRelated1Container}
+      />
+      <CheckBox
+        title="No"
+        checkedColor="green"
+        checked={vehicle === "false"}
+        onPress={() => {
+          setVehicle("false");
+          setFormData({
+            ...formData,
+            vehicle: vehicle,
+          });
+        }}
+        containerStyle={styles.drugRelated1Container}
+      />
+      <View>
+        <Text style={{ fontWeight: "bold" }}>Provide a description</Text>
       </View>
-      <View style={styles.vehicleInvolvedSecond}>
-        <RadioButton
-          status={inforRegardingVehicle === "second" ? "checked" : "unchecked"}
-          onPress={() => setinforRegardingVehicle("second")}
-        />
-        <Text style={{ position: "relative", top: 8 }}>No</Text>
-      </View>
-      <Text style={styles.evidenceText}>Do you have any evidence?</Text>
-      <Text style={styles.uploadText}>
-        Please upload any pictures, videos, documents regarding the incident if
-        any.
-      </Text>
-      <View style={styles.uploadBorder}>
-        <View style={styles.buttonCenterView}>
-          <Button
-            mode="contained"
-            style={styles.addFileButton}
-            title="Add File"
-            onPress={() => uploadFile()}
-          ></Button>
-        </View>
-      </View>
+      <TextInput
+        placeholder="Describe the suspect"
+        onChangeText={(newText) => {
+          setwhatWasText(newText);
+          setFormData({
+            ...formData,
+            suspect_info: newText,
+          });
+        }}
+        style={styles.takenTextInput}
+      />
     </View>
   );
 };
 
-export default SuspectInfoScreen;
+export default TypeOfCrime;
 
 const styles = StyleSheet.create({
   firstView: {
@@ -115,7 +128,7 @@ const styles = StyleSheet.create({
     display: "flex",
   },
 
-  inforRegardingSuspect: {
+  TypeOfCrimeText: {
     fontFamily: "Roboto",
     fontStyle: "normal",
     fontWeight: "700",
@@ -124,78 +137,96 @@ const styles = StyleSheet.create({
     color: "#000000",
   },
 
-  buttonCenterView: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+  allThatApllyText: {
+    marginLeft: 0,
+    margin: 12,
+    fontWeight: "400",
   },
 
-  uploadBorder: {
-    marginLeft: 0,
-    margin: 10,
+  drugRelatedContainer: {
+    marginLeft: -10,
+    margin: 5,
+    backgroundColor: "transparent",
+    borderWidth: 0,
+  },
+
+  drugRelated1Container: {
+    backgroundColor: "transparent",
+    margin: -2,
+    borderWidth: 0,
+  },
+
+  drugRelated2Container: {
+    backgroundColor: "transparent",
+    borderWidth: 0,
+    margin: -2,
+  },
+
+  drugRelated3Container: {
+    backgroundColor: "transparent",
+    borderWidth: 0,
+    margin: -2,
+  },
+
+  theftContainer: {
+    marginLeft: -10,
+    margin: 15,
+    backgroundColor: "transparent",
+    borderWidth: 0,
+  },
+
+  takenText: {
+    margin: -10,
+    marginLeft: 25,
+  },
+
+  takenTextInput: {
+    // margin:10,
     width: "auto",
     height: 172,
     backgroundColor: "#FCFAFA",
-    borderWidth: 2,
-    dashed: "#595959",
+    borderWidth: 1,
+    solid: "#919191",
     borderRadius: 5,
+    margin: 25,
+    textAlign: "center",
     backgroundColor: "transparent",
   },
 
-  firstRadioButtonView: {
-    margin: 7,
-    display: "flex",
-    flexDirection: "row",
+  takenText1: {
+    margin: -10,
+    marginLeft: 25,
   },
 
-  secondRadioButtonView: {
-    margin: 7,
-    display: "flex",
-    flexDirection: "row",
+  selfHarmContainer: {
+    marginLeft: -10,
+    margin: 5,
+    backgroundColor: "transparent",
+    borderWidth: 0,
   },
 
-  vehicleInvolvedText: {
-    marginLeft: 0,
-    margin: 7,
-    fontFamily: "Roboto",
-    fontStyle: "normal",
-    fontWeight: "700",
-    fontSize: 16,
-    lineHeight: 19,
-    color: "#000000",
+  sexCrimesContainer: {
+    marginLeft: -10,
+    margin: 5,
+    backgroundColor: "transparent",
+    borderWidth: 0,
   },
 
-  vehicleInvolvedFirst: {
-    margin: 7,
-    display: "flex",
-    flexDirection: "row",
+  molestationCrimesContainer: {
+    backgroundColor: "transparent",
+    margin: -2,
+    borderWidth: 0,
   },
 
-  vehicleInvolvedSecond: {
-    margin: 7,
-    display: "flex",
-    flexDirection: "row",
+  rapeCrimesContainer: {
+    backgroundColor: "transparent",
+    borderWidth: 0,
+    margin: -2,
   },
 
-  evidenceText: {
-    marginLeft: 0,
-    margin: 7,
-    fontFamily: "Roboto",
-    fontStyle: "normal",
-    fontWeight: "700",
-    fontSize: 16,
-    lineHeight: 19,
-    color: "#000000",
-  },
-
-  uploadText: {
-    marginLeft: 0,
-    margin: 7,
-    fontFamily: "Roboto",
-    fontStyle: "normal",
-    fontWeight:"400",
-    fontSize: 16,
-    lineHeight: 19,
-    color: "#000000",
+  prostitutionCrimesContainer: {
+    backgroundColor: "transparent",
+    borderWidth: 0,
+    margin: -2,
   },
 });

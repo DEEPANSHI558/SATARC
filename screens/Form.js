@@ -31,6 +31,17 @@ const ProgressStepsProps = {
 };
 
 const Form = ({ navigation }) => {
+  const [formData, setFormData] = useState({
+    time: Date.now().toString(),
+    location: "",
+    exact_address: "",
+    regarding: "",
+    crime_type: "",
+    evidence: "",
+    description: "",
+    suspect_info: "",
+    suspect: "",
+  });
   const submitTip = async (formData, user_id) => {
     try {
       const d = (
@@ -44,39 +55,37 @@ const Form = ({ navigation }) => {
 
   return (
     <Formik
-      initialValues={{
-        crimeTime: "",
-        dateTime: "",
-        address: "",
-        regarding: "",
-        regardingTip: "",
-      }}
-      onSubmit={(values) => {
-        navigation.navigate("Login");
-        console.log(values);
-        submitTip(values);
-        console.log("submitted");
+      initialValues={formData}
+      onSubmit={(data) => {
+        console.log(data);
+        submitTip(data);
+        navigation.navigate("Task");
       }}
     >
-      {({ handleChange, handleBlur, handleSubmit, values }) => (
+      {({ handleSubmit }) => (
         <View style={styles.firstView}>
           <View style={{ height: 30 }} />
           <ProgressSteps {...ProgressStepsProps}>
             <ProgressStep label="New Tip">
               <CrimeDetailScreenOne
-                values={values}
-                handleChange={handleChange}
-                handleBlur={handleBlur}
-              ></CrimeDetailScreenOne>
+                formData={formData}
+                setFormData={setFormData}
+              />
             </ProgressStep>
             <ProgressStep label="Regarding">
-              <TipRegardingScreen values={values}></TipRegardingScreen>
+              <TipRegardingScreen
+                formData={formData}
+                setFormData={setFormData}
+              />
             </ProgressStep>
             <ProgressStep label="Crime Info">
-              <TypeOfCrime></TypeOfCrime>
+              <TypeOfCrime formData={formData} setFormData={setFormData} />
             </ProgressStep>
             <ProgressStep label="Suspect Info" onSubmit={handleSubmit}>
-              <SuspectInfoScreen></SuspectInfoScreen>
+              <SuspectInfoScreen
+                formData={formData}
+                setFormData={setFormData}
+              />
             </ProgressStep>
           </ProgressSteps>
         </View>
