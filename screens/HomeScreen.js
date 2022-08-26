@@ -67,7 +67,7 @@ const HomeScreen = ({ navigation }) => {
             </TouchableOpacity>
           </View>
         </View>
-        <Text style={{ fontSize: 24, marginTop: -4 }}>MY TIPS</Text>
+        <Text style={{ fontSize: 24, marginTop: 14, left:5, }}>MY TIPS</Text>
         {/* TODO: Dynamically render tips */}
         <View style={styles.tipContainer}>
           <View style={styles.tipCard}></View>
@@ -100,7 +100,8 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   headerText: {
-    fontWeight: 400,
+    marginTop:40,
+    fontWeight: "400",
     fontSize: 24,
     lineHeight: 28,
   },
@@ -124,6 +125,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   statusCard: {
+    marginTop:20,
     height: 120,
     backgroundColor: "#D9D9D9",
     borderRadius: 10,
@@ -149,16 +151,18 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "white",
-    fontWeight: 700,
+    fontWeight: "700",
     fontSize: 16,
   },
   tipCard: {
+    marginTop:1,
+    marginBottom:1,
     height: 66,
     backgroundColor: "#E8E8E8",
     borderRadius: 10,
   },
   tipContainer: {
     rowGap: 2,
-    marginTop: -15,
+    marginTop: 15,
   },
 });

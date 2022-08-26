@@ -197,12 +197,12 @@ const styles = StyleSheet.create({
   },
   otpReceiveContainer: {
     // paddingBottom: 300,
-    height: "80px",
+    height: 80,
     width: "100%",
     // backgroundColor: "black",
   },
   otpinvalidContainer: {
-    height: "500px",
+    height: 500,
     width: "100%",
     // backgroundColor: "black",
   },

@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
     margin: 7,
     fontFamily: "Roboto",
     fontStyle: "normal",
-    fontWeight: "400",
+    fontWeight:"400",
     fontSize: 16,
     lineHeight: 19,
     color: "#000000",

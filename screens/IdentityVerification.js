@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
   font: {
     fontfamily: "Roboto",
     fontstyle: "normal",
-    fontweight: 400,
+    fontweight: "400",
     fontsize: 16,
     lineheight: 19,
     color: "#000000",
@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
     height: 20,
     fontfamily: "Roboto",
     fontstyle: "normal",
-    fontweight: 400,
+    fontweight: "400",
     fontsize: 14,
     lineheight: 16,
     color: "#000000",

@@ -110,16 +110,16 @@ const CrimeDetailsScreenOne = ({ values }) => {
             name="birthdaytime"
             style={{
               width: "auto",
-              height: "50px",
+              height: 50,
               backgroundColor: "#FCFAFA",
-              borderWidth: "1px",
+              borderWidth: 1,
               solid: "#919191",
-              borderRadius: "5px",
-              margin: "10px",
+              borderRadius: 5,
+              margin: 10,
               textAlign: "center",
               backgroundColor: "transparent",
               fontFamily: "Roboto mono",
-              fontSize: "20px",
+              fontSize: 20,
             }}
             value={dateTime}
             onChange={(event) => {
