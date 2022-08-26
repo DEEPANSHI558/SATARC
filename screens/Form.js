@@ -47,7 +47,7 @@ const Form = ({ navigation }) => {
       const d = (
         await axios.post(tip_api, { formData: formData, user_id: user_id })
       ).data;
-      console.log(d);
+      navigation.navigate("Task");
     } catch (err) {
       console.log(err);
     }
@@ -59,7 +59,6 @@ const Form = ({ navigation }) => {
       onSubmit={(data) => {
         console.log(data);
         submitTip(data);
-        navigation.navigate("Task");
       }}
     >
       {({ handleSubmit }) => (
